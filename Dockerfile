@@ -1,9 +1,11 @@
-FROM ubuntu:18.04
+FROM node:14
 
-RUN apt-get update && \
-    apt-get install -y redis-server && \
-    apt-get clean
+WORKDIR /usr/src/app
 
-EXPOSE 6379
+COPY package.json .
+RUN npm install 
+COPY . .
 
-CMD ["redis-server", "--protected-mode no"]
+EXPOSE 3000
+
+CMD ["node", "index.js"]
