@@ -1,2 +1,4 @@
-FROM ubuntu:20.04
-RUN apt update && apt upgrade -y
+FROM ubuntu
+MAINTAINER test-user
+RUN apt update
+CMD ["echo", "Hello World"]
